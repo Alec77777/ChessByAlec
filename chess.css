@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    aspect-ratio: 1/1;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    max-width: 500px;
+    aspect-ratio: 1/1;
+    /* Maybe try giving the squares coordinates */
+}
+
+.board {
+    aspect-ratio: 1/1;
+    background: black;
+    position: relative;
+    border: 3px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.square {
+    aspect-ratio: 1/1;
+    height: calc(100%/8);
+}
+
+.piece {
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+div[data-light-square] {
+    background: url('Resources/Light_Square.jpg') no-repeat;
+}
+
+div[data-dark-square] {
+    background: url('Resources/Dark_Square.jpg') no-repeat;
+}
