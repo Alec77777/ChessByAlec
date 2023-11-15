@@ -44,9 +44,9 @@ body {
 }
 
 div[data-light-square] {
-    background: url('Resources/Light_Square.jpg') no-repeat;
+    background: url('images/Dark_Square.jpg') no-repeat;
 }
 
 div[data-dark-square] {
-    background: url('Resources/Dark_Square.jpg') no-repeat;
+    background: url('images/Dark_Square.jpg') no-repeat;
 }
