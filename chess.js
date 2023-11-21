@@ -1,11 +1,7 @@
 const board = document.querySelectorAll(".board")[0];
-
-const arrBoard = [Array(8), Array(8), Array(8), Array(8), Array(8), Array(8), Array(8), Array(8)];
-
-const arrPieces = ['p', 'r', 'n', 'b', 'q', 'k'];
 const arrColumnLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
-// Take note: array indeces are from 0 to 7 top-left to bottom-right;
+// Take note: array indeces are from 0 to 7 bottom-left to top-right;
 // 8 [][][][][][][][]
 // 7 [][][][][][][][]
 // 6 [][][][][][][][]
@@ -33,56 +29,75 @@ for (let k = 8; k >= 1; k--) {
         square.setAttribute("data-coordinate", squareCoordinates);
         square.classList.add("square");
         board.appendChild(square);
-
-        // console.log(squareCoordinates);
     }
 }
-console.dir(arrBoard);
 
-function changeSquareColor() {
-    var cl = document.getElementById("squareColor").value;
+function changeLightSquareColor() {
+    var cl = document.getElementById("lightSquareColor").value;
     document.querySelectorAll('[data-light-square]').forEach(e => e.style.background = cl);
 }
 
-function setBoard(fenString) {
-    //fenString Example (space is next square and # is next row): 
-    // 0r 0n 0b 0k 0q 0b 0n 0r#0p 0p 0p 0p 0p 0p 0p 0p#####1p 1p 1p 1p 1p 1p 1p 1p#1r 1n 1b 1k 1q 1b 1n 1r 
+function changeDarkSquareColor() {
+    var cl = document.getElementById("darkSquareColor").value;
+    document.querySelectorAll('[data-dark-square]').forEach(e => e.style.background = cl);
+}
 
-    let posHash = fenString.indexOf('#');;
-    let k = 8;
+function setBoard(board) {
+    //arrBoard Example:
+    // 8 [0r][0n][0b][0q][0k][0b][0n][0r]
+    // 7 [0p][0p][0p][0p][0p][0p][0p][0p]
+    // 6 [  ][  ][  ][  ][  ][  ][  ][  ]
+    // 5 [  ][  ][  ][  ][  ][  ][  ][  ]
+    // 4 [  ][  ][  ][  ][  ][  ][  ][  ]
+    // 3 [  ][  ][  ][  ][  ][  ][  ][  ]
+    // 2 [1p][1p][1p][1p][1p][1p][1p][1p]
+    // 1 [1r][1n][1b][1q][1k][1b][1n][1r]
+    //    A   B   C   D   E   F   G   H
 
-    while ((fenString.length !== 0) && (k !== 0)) {
+    for (let k = 1-1; k <= 8-1; k++) {
+        for (let j = 1-1; j <= 8-1; j++) {
+            var piece = board[k][j];
 
-        console.log(fenString);
-        row = fenString.slice(0, posHash);
-        fenString = fenString.slice(posHash + 1, fenString.length);
-        console.log(row, fenString);
-
-        let posSpace = row.indexOf(' ');
-        let j = 1;
-
-
-        while (row.length !== 0) {
-            console.log(row);
-            piece = row.slice(0, posSpace);
-            row = row.slice(posSpace + 1, row.length);
-            console.log(posSpace, piece, row);
-
-            pieceImage = document.createElement('img');
-            pieceImage.setAttribute('src', `images/${piece}.png`);
-            pieceImage.setAttribute('data-piece', `${piece}`);
-            pieceImage.classList.add('piece');
-            document.getElementById(`square-${arrColumnLetters[j - 1]}${k}`).appendChild(pieceImage);
-            arrBoard[k - 1][j - 1] = `${piece}`;
-            console.log(arrBoard);
-
-            j++;
-            posSpace = row.indexOf(' ');
+            if (piece) {
+                let pieceImg = document.createElement('img');
+                pieceImg.classList.add('piece');
+                pieceImg.setAttribute('data-piece', `${piece}`);
+                pieceImg.setAttribute('src', `images/${piece}.png`);
+                pieceImg.setAttribute('draggable', `true`);
+                pieceImg.style.width = '100%';
+                pieceImg.style.height = '100%';
+                let square = document.getElementById(`square-${arrColumnLetters[j]}${k+1}`);
+                square.appendChild(pieceImg);
+            }
         }
-
-        k--;
-        posHash = fenString.indexOf('#');
     }
 }
 
-setBoard('0r 0n 0b 0k 0q 0b 0n 0r #0p 0p 0p 0p 0p 0p 0p 0p #####1p 1p 1p 1p 1p 1p 1p 1p #1r 1n 1b 1k 1q 1b 1n 1r #');
+var arrBoard = [['1r', '1n', '1b', '1q', '1k', '1b', '1n', '1r'], ['1p', '1p', '1p', '1p', '1p', '1p', '1p', '1p'], [], [], [], [], ['0p', '0p', '0p', '0p', '0p', '0p', '0p', '0p'], ['0r', '0n', '0b', '0q', '0k', '0b', '0n', '0r']];
+setBoard(arrBoard);
+
+document.querySelectorAll('.piece').forEach(piece => {
+    var startSquare;
+
+    piece.addEventListener('dragstart', e => {
+        startSquare = document.elementsFromPoint(e.clientX, e.clientY)[1]; // first parent of img is square
+    })
+
+    piece.addEventListener('dragend', e => {
+        let endObject = document.elementsFromPoint(e.clientX, e.clientY)[0]; // endObject is the object where the piece is placed
+        let endObjectParent = document.elementsFromPoint(e.clientX, e.clientY)[1]; // endObjectParent is the parent of the object where the piece is placed
+        
+        if (endObject.classList.contains('square')){
+            endObject.appendChild(piece);
+        } else if (endObject.dataset.piece[0] !== piece.dataset.piece[0]) {
+            //if.. end and start pieces are not of the same colour
+            console.log(endObject);
+            endObjectParent.removeChild(endObject);
+            endObjectParent.appendChild(piece);
+        }
+    })
+});
+
+// function movePiece (Xcoord, Ycoord, piece){
+
+// }

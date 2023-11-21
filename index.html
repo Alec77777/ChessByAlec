@@ -5,8 +5,33 @@
 </head>
 
 <body>
-    <input type="color" id="squareColor" onchange="changeSquareColor()">
+    <label for="lightSquareColor">Light square colour:</label>
+    <input type="color" id="lightSquareColor" onchange="changeLightSquareColor()">
+    <br>
+    <label for="darkSquareColor">Dark square colour:</label>
+    <input type="color" id="darkSquareColor" onchange="changeDarkSquareColor()">
+
     <div class="container">
+        <div class="vertical-coordinates">
+            <span>8</span>
+            <span>7</span>
+            <span>6</span>
+            <span>5</span>
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+        </div>
+        <div class="horizontal-coordinates">
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+            <span>E</span>
+            <span>F</span>
+            <span>G</span>
+            <span>H</span>
+        </div>
         <div class="board">
 
         </div>
