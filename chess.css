@@ -72,10 +72,6 @@ body {
     cursor: grab;
 }
 
-.piece.dragging{
-    opacity: 0.1;
-}
-
 div[data-light-square] {
     background: url('images/light_square.jpg') no-repeat;
 }
