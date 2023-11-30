@@ -7,7 +7,7 @@
 
   <body>
     <audio id="pieceAudio">
-      <source src="audio/pieceMove.m4a" type="audio/mpeg" />
+      <source src="audio/move-self.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
 
@@ -36,7 +36,7 @@
       <option value="3">3</option>
     </select>
 
-    <div class="container" data-img-1="13">
+    <div class="container">
       <div class="vertical-coordinates">
         <span>8</span>
         <span>7</span>
@@ -58,17 +58,18 @@
         <span>H</span>
       </div>
       <div class="board"></div>
-      <?xml version="1.0" encoding="UTF-8"?>
-      <svg
-        href="images/b.svg"
-        version="1.1"
-        viewBox="0 0 1600 1600"
-        xmlns="http://www.w3.org/2000/svg"
-        width="50px"
-        height="50px"
-        fill="white"
-        stroke="black"
-      ></svg>
+    </div>
+
+    <div class="cover hidden">
+      <!-- This will be used to promote pawns or to place pieces on squares at the start -->
+      <div class="piece-select">
+        <img src="#" alt="king" class="king hidden" />
+        <img src="#" alt="queen" class="queen" />
+        <img src="#" alt="rook" class="rook" />
+        <img src="#" alt="bishop" class="bishop" />
+        <img src="#" alt="night" class="night" />
+        <img src="#" alt="pawn" class="pawn hidden" />
+      </div>
     </div>
   </body>
 </html>
