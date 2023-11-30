@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>chess by | Alec</title>
+    <link rel="stylesheet" href="chess.css" />
+    <script src="chess.js" defer></script>
+  </head>
+
+  <body>
+    <audio id="pieceAudio">
+      <source src="audio/pieceMove.m4a" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <label for="lightSquareColor">Light square colour:</label>
+    <input
+      type="color"
+      id="lightSquareColor"
+      onchange="changeLightSquareColor()"
+    />
+    <br />
+    <label for="darkSquareColor">Dark square colour:</label>
+    <input
+      type="color"
+      id="darkSquareColor"
+      onchange="changeDarkSquareColor()"
+    />
+    <br />
+    <label for="pieceStyle">Dark square colour:</label>
+    <select
+      name="pieceStyle"
+      id="pieceStyle"
+      onchange="changePieceStyle(value)"
+    >
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <div class="container" data-img-1="13">
+      <div class="vertical-coordinates">
+        <span>8</span>
+        <span>7</span>
+        <span>6</span>
+        <span>5</span>
+        <span>4</span>
+        <span>3</span>
+        <span>2</span>
+        <span>1</span>
+      </div>
+      <div class="horizontal-coordinates">
+        <span>A</span>
+        <span>B</span>
+        <span>C</span>
+        <span>D</span>
+        <span>E</span>
+        <span>F</span>
+        <span>G</span>
+        <span>H</span>
+      </div>
+      <div class="board"></div>
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg
+        href="images/b.svg"
+        version="1.1"
+        viewBox="0 0 1600 1600"
+        xmlns="http://www.w3.org/2000/svg"
+        width="50px"
+        height="50px"
+        fill="white"
+        stroke="black"
+      ></svg>
+    </div>
+  </body>
+</html>

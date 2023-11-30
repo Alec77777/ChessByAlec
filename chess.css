@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+:root {
+  --coordinates-strip-width: 30px;
+}
+
+.container {
+  aspect-ratio: 1/1;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: calc(90vw + var(--coordinates-strip-width));
+  max-width: 500px;
+  aspect-ratio: 1/1;
+  /* Maybe try giving the squares coordinates */
+}
+
+.vertical-coordinates {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - var(--coordinates-strip-width));
+  width: var(--coordinates-strip-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.horizontal-coordinates {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: var(--coordinates-strip-width);
+  width: calc(100% - var(--coordinates-strip-width));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.board {
+  aspect-ratio: 1/1;
+  background: black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: 3px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100% - var(--coordinates-strip-width));
+}
+
+.square {
+  aspect-ratio: 1/1;
+  height: calc(100% / 8);
+}
+
+.piece {
+  height: 100%;
+  aspect-ratio: 1/1;
+  cursor: grab;
+}
+
+div[data-light-square] {
+  background: url("images/light_square.jpg") no-repeat;
+}
+
+div[data-dark-square] {
+  background: url("images/dark_square.jpg") no-repeat;
+}
