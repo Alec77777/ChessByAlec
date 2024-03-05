@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <title>chess by | Alec</title>
+    <link rel="stylesheet" href="timer.css" />
+    <link rel="stylesheet" href="menu-bar.css" />
+    <link rel="stylesheet" href="chess.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chess.js" defer></script>
+    <script src="menu-bar.js" defer></script>
+  </head>
+
+  <body>
+    <!-- <button id="singlePlayerButton">SinglePlayer</button> -->
+    <!-- <button id="multiPlayerButton">Multiplayer</button> -->
+    <!-- <button id="start">Start</button>
+
+    <div class="player p1">
+      Player 1
+      <div class="connected">Connected <span></span></div>
+      <div class="ready">Ready <span></span></div>
+    </div>
+
+    <div class="player p2">
+      Player 2
+      <div class="connected">Connected <span> </span></div>
+      <div class="ready">Ready <span></span></div>
+    </div>
+
+    <div id="info"></div>
+    <div id="turn"></div> -->
+
+    <!-- <label for="lightSquareColor">Light square colour:</label>
+    <input
+      type="color"
+      id="lightSquareColor"
+      onchange="changeLightSquareColor()"
+    />
+    <br />
+    <label for="darkSquareColor">Dark square colour:</label>
+    <input
+      type="color"
+      id="darkSquareColor"
+      onchange="changeDarkSquareColor()"
+    />
+    <br />
+    <label for="pieceStyle">Dark square colour:</label>
+    <select
+      name="pieceStyle"
+      id="pieceStyle"
+      onchange="changePieceStyle(value)"
+    >
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select> -->
+
+    <audio id="pieceAudio">
+      <source src="audio/move-self.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="chessgame-container">
+      <div class="game-cover">
+        <p class="game-cover-message">What is your username?</p>
+        <div class="game-start-inputs">
+          <input
+            class="username-input"
+            type="text"
+            maxlength="8"
+            minlength="3"
+            placeholder="8 digits"
+          />
+          <p>
+            <button class="play-btn">play</button> or
+            <button class="spectate-btn">spectate</button>
+          </p>
+        </div>
+        <div class="game-restart-inputs hidden">
+          <button class="restart-btn">Restart</button>
+        </div>
+      </div>
+
+      <div class="game-info">
+        <div class="menu-bar open">
+          <div class="menu-bar-line"></div>
+          <div class="menu-bar-line"></div>
+          <div class="menu-bar-line"></div>
+        </div>
+
+        <div class="username">
+          <span>You are: </span>
+          <h2 class="username-label">User</h2>
+        </div>
+
+        <div class="user-connections">
+          <div class="user user-0">
+            <h2>Player 1</h2>
+            <div class="username">--Username--</div>
+            <div class="status">Disconnected</div>
+          </div>
+
+          <div class="user user-1">
+            <h2>Player 2</h2>
+            <div class="username">--Username--</div>
+            <div class="status">Disconnected</div>
+          </div>
+
+          <div class="user spectators">
+            <h2>Spectators</h2>
+            <div class="spectatorNumList-Container">
+              <div class="spectatorNum">0</div>
+              <div class="spectatorList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="board-container">
+        <div class="chessboard"></div>
+      </div>
+
+      <span class="copyright">Copyright &copy; | ChessByAlec 2024</span>
+    </div>
+  </body>
+</html>

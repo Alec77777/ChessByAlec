@@ -1,0 +1,20 @@
+.timer-container {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.timer-container .username {
+  background-color: transparent;
+  font-size: 24px;
+  font-weight: bolder;
+  padding: 0.5em 0;
+  padding-left: 0.5rem;
+}
+
+.timer-container .time {
+  display: block;
+  color: white;
+  font-size: 36px;
+  padding: 0.5em 0.75em;
+  border-radius: 0.5rem;
+  background-color: #333;
+}

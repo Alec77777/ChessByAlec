@@ -1,0 +1,81 @@
+:root {
+  --animation-duration: 0.5s;
+  --menu-bar-width: 50px;
+}
+
+/*closed menu bar*/
+.menu-bar {
+  aspect-ratio: 1/1;
+  background-color: #eee;
+  width: var(--menu-bar-width);
+  padding: calc((1 / 7) * var(--menu-bar-width));
+  border-radius: calc(0.2 * var(--menu-bar-width));
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-bar .menu-bar-line {
+  background-color: black;
+  height: calc((1 / 7) * 100%);
+  width: calc(100% - ((2 / 7) * 100%));
+  position: absolute;
+  border-radius: calc(var(--menu-bar-width) * 0.1);
+  transition: all var(--animation-duration);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-bar-line:nth-child(1) {
+  top: calc((2 / 7) * var(--menu-bar-width));
+}
+
+.menu-bar-line:nth-child(2) {
+  top: 50%;
+}
+
+.menu-bar-line:nth-child(3) {
+  top: calc((5 / 7) * var(--menu-bar-width));
+}
+
+/*open menu bar*/
+.menu-bar.open .menu-bar-line {
+  top: 50%;
+}
+
+.menu-bar.open .menu-bar-line:nth-child(1) {
+  animation: rotate-45 0.2s var(--animation-duration) 1 normal both;
+}
+
+.menu-bar.open .menu-bar-line:nth-child(2) {
+  animation: disappear 0.2s 0.3s 1 normal both;
+}
+
+.menu-bar.open .menu-bar-line:nth-child(3) {
+  animation: rotate-m45 0.2s var(--animation-duration) 1 normal both;
+}
+
+@keyframes disappear {
+  100% {
+    display: none;
+  }
+}
+
+@keyframes rotate-45 {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateZ(45deg);
+  }
+}
+
+@keyframes rotate-m45 {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateZ(-45deg);
+  }
+}
